@@ -6,8 +6,7 @@ namespace BinaryTreeAssestment.Components
 {
     public class TreeManager
     {
-        // Function accept array of data, process nodes to tree structure
-        // Returns root node
+        // Function accept double list Nodes and process nodes to tree structure
         public Node LinkNodes(List<List<Node>> data)
         {
             // Starting from the second row
@@ -16,7 +15,7 @@ namespace BinaryTreeAssestment.Components
             {
                 for (var colNr = 0; colNr < rowNr; colNr++)
                 {
-                    // Parent row node
+                    // Parent node
                     var node = data[rowNr - 1][colNr];
 
                     // Assign left node
@@ -31,7 +30,7 @@ namespace BinaryTreeAssestment.Components
             return data[0][0];
         }
 
-        // Function searches for maximum valuable path and returns best result
+        // Function searches for maximum valuable path and returns the best result
         public PathHistory FindMaximumValuablePath(Node rootNode)
         {
             if (rootNode == null)
@@ -46,7 +45,7 @@ namespace BinaryTreeAssestment.Components
             return paths.OrderByDescending(x => x.TotalSum).FirstOrDefault();
         }
 
-        // Recursion function that allow to explore tree pathes.
+        // Recursion function that allow to explore tree paths.
         private List<PathHistory> TraverseBinaryTree(Node node, bool isEven, PathHistory pathHistory)
         {
             var result = new List<PathHistory>();
@@ -62,7 +61,7 @@ namespace BinaryTreeAssestment.Components
             // Registerig visited node
             pathHistory.AddNode(node);
 
-            // Run traverse recursive function for left child
+            // Run traverse recursive function for the left child
             var leftNodeResult = TraverseBinaryTree(node.LeftNode, !isEven, (PathHistory)pathHistory.Clone());
             // Run traverse recursive function for the right child
             var rightNodeResult = TraverseBinaryTree(node.RightNode, !isEven, (PathHistory)pathHistory.Clone());

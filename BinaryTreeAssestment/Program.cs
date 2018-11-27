@@ -10,7 +10,10 @@ namespace BinaryTreeAssestment
         static void Main(string[] args)
         {
             //var inputDataManager = new ConsoleDataManager();
-            var inputDataManager = new FileDataManager("TestInput/MainTest.txt");
+
+            string inputFilename = "TestInput/MainTest.txt";
+
+            var inputDataManager = new FileDataManager(inputFilename);
             var treeManager = new TreeManager();
 
             var nodes = inputDataManager.ValidateInput();
@@ -24,6 +27,7 @@ namespace BinaryTreeAssestment
                 return;
             }
 
+            // Represent all nodes path as arrow connected strings
             var stringPath = path.NodesPath.Select(x => x.Value.ToString()).Aggregate((i, j) => $"{i} -> {j}");
 
             Console.WriteLine($"Max path sum: {path.TotalSum}");

@@ -13,7 +13,7 @@ namespace BinaryTreeAssestment.InputProviders
             throw new NotImplementedException();
         }
 
-        // Read data input and convert it to Node double list structure
+        // Read data input and convert it to Node double list structure (first list for rows, second for columns)
         public List<List<Node>> ValidateInput()
         {
             var index = 0;
